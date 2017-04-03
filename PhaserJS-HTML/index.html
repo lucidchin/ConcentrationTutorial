@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Concentration</title>
+        <style>
+            @font-face{ 
+                font-family: 'MarkerFelt-Wide';
+                src: url('markerfelt-wide.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+            html,body {
+                padding:0;
+                margin:0;
+                background-color:green;
+            }
+            .fontPreload{
+                /* We need this here to use the font at least once
+                   before it will be accessed properly from phaser */
+                position:absolute;
+                left:-100px;
+                font-family: 'MarkerFelt-Wide';
+            }
+        </style>
+        <script src="js/phaser.min.js"></script>
+        <script src="js/concentration.js"></script>
+    </head>
+    <body>
+        <div id="game"></div>
+        <!-- Yep, here it is below, our first usage of our font -->
+        <div class="fontPreload">.</div>
+        <script>
+            /**
+             * Here be Global variables.
+             * I don't recommend this, but for learning purposes, it's easier to 
+             * have these in the global scope.
+             * 
+             */
+            var ipad;
+            var deviceType;
+            var fontstring;
+            var appTitle;
+            var alertTitle;
+            var alertMessage;
+            var fontcolor;
+            var topMenuView;
+            var topTitle; 
+            var baselevel, 
+                level, 
+                maxlevel, 
+                screenwidth, 
+                screenheight,
+                maxcolumn, 
+                maxrow, 
+                barheight, 
+                fontsize,
+                buttonsize, 
+                picWidth, 
+                picHeight, 
+                lastChoice, 
+                numMoves, 
+                gridsize;
+
+            var imageArray = [];
+            var gridArray = [];
+            var revealedArray = [];
+
+            var settingsButton;
+            var helpButton;
+            var gridView;
+            var alertMsg;
+
+            // This is where we start the Phaser Framework.
+            var game = new Phaser.Game(640, 920, Phaser.AUTO, 'game');
+            game.state.add('Game', Concentration);
+            game.state.start('Game');
+        </script>
+    </body>
+</html>
